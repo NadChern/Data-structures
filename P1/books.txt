@@ -1,0 +1,55 @@
+Douglas Adams,The Hitchhiker's Guide To The Galaxy,1979
+Richard Adams,Watership Down,1972
+Mitch Albom,The Five People You Meet in Heaven,2003
+Laurie Halse Anderson,Speak,1999
+Maya Angelou,I Know Why the Caged Bird Sings,1969
+Jay Asher,Thirteen Reasons Why,2007
+Isaac Asimov,Foundation Series,1951-1993
+Ann Brashares,The Sisterhood of the Traveling Pants,2001
+Libba Bray,A Great and Terrible Beauty,2003
+Dan Brown,The Da Vinci Code,2003
+Meg Cabot,The Princess Diaries,2000
+Orson Scott Card,Ender's Game,1985
+Tom Clancy,The Hunt for Red October,1984
+Suzanne Collins,The Hunger Games,2008
+F. Scott Fitzgerald,The Great Gatsby,1925
+John Flanagan,Ranger's Apprentice Series,2004-2011
+Cornelia Funke,Inkheart,2003
+William Gibson,Neuromancer,1984
+William Golding,Lord of the Flies,1954
+William Goldman,The Princess Bride,1973
+James Gurney,Dinotopia: A Land Apart from Time,1992
+Will Hobbs,Far North,1996
+Alice Hoffman,Practical Magic,1995
+Aldous Huxley,Brave New World,1931
+Guy Gavriel Kay,The Summer Tree,1984
+Daniel Keyes,Flowers For Algernon,1966
+Patrice Kindl,Owl in Love,1993
+Masashi Kishimoto,Naruto,1997
+Tite Kubo,Bleach (graphic novel),2001-2016
+Elizabeth Laird,Kiss the Dust,1991
+Harper Lee,To Kill a Mockingbird,1960
+C.S. Lewis,The Lion the Witch and the Wardrobe,1984
+Robert Ludlum,The Bourne Series,1980-1990
+Yann Martel,Life of Pi,2001
+Lurlene McDaniel,Breathless,2009
+Stephenie Meyer,Twilight Series,2005-2008
+Garth Nix,Sabriel,1995
+George Orwell,Nineteen Eighty-Four (1984),1949
+Christopher Paolini,Eragon,2002
+Gary Paulsen,Hatchet,1987
+Jodi Picoult,My Sister's Keeper,2003
+Philip Pullman,The Golden Compass,1995
+J.K. Rowling,Harry Potter Series,1997-2007
+Louis Sachar,Holes,1998
+Shueisha,Shonen Jump Series,1968-present
+Neil Shusterman,The Shadow Club,1988
+Jeff Smith,Bone Series,1991-2004
+Art Spiegelman,Maus: A Survivor's Tale,1986
+Amy Tan,The Joy Luck Club,1989
+J.R.R. Tolkien,The Lord of the Rings,1954
+J.R.R. Tolkien,The Hobbit,1937
+Eric Walters,Shattered,2006
+H.G. Wells,The War Of The Worlds,1897
+Patricia C. Wrede,Dealing with Dragons,1990
+John Wyndham,The Chrysalids,1955
