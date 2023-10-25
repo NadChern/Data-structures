@@ -1,3 +1,3 @@
-/Users/nadin/CLionProjects/Data_struct/lab4/cmake-build-debug/CMakeFiles/lab4.dir
-/Users/nadin/CLionProjects/Data_struct/lab4/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/nadin/CLionProjects/Data_struct/lab4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/nadin/CLionProjects/Data_struct/Lab4/cmake-build-debug/CMakeFiles/lab4.dir
+/Users/nadin/CLionProjects/Data_struct/Lab4/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nadin/CLionProjects/Data_struct/Lab4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
