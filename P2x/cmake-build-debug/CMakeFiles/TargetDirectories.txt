@@ -1,0 +1,3 @@
+/Users/nadin/CLionProjects/p2x/cmake-build-debug/CMakeFiles/p2x.dir
+/Users/nadin/CLionProjects/p2x/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nadin/CLionProjects/p2x/cmake-build-debug/CMakeFiles/rebuild_cache.dir
