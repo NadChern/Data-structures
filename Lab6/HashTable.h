@@ -14,6 +14,8 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <cmath>
+
 
 using namespace std;
 
@@ -35,7 +37,7 @@ public:
     // MODIFY: delete array from the heap
     // OUT: none
 
-    int put(int key, int value);
+    int put(int key, int value, int &);
     // Insert key-value in the hash table by using hash function
     // IN: key and value
     // MODIFY: populated array with key-value pairs (if the key doesn't exist,
@@ -69,6 +71,11 @@ public:
     // MODIFY: none
     // OUT: true if hash table is empty (no unique keys), otherwise false
 
+    double averageProbesLinearProbing();
+
+    int rehashQuadraticProbing(int, int);
+
+    int putQuadraticProbing(int, int);
 
 private:
     struct Bucket {
@@ -79,6 +86,7 @@ private:
     Bucket *buckets; // pointer to the array of buckets
     int capacity;     // capacity of the array
     int numElements; // number of elements (unique key-value pairs) in array
+    static double EXPAND_FACTOR;
 
     int hash(int key);
     // Private helper function
@@ -97,9 +105,17 @@ private:
     // position (index) in array
     // OUT: new position (index)
 
+    void resize();
+
+    double loadFactor();
+
+    bool del(int);
+
 };
 
 #endif //LAB6_HASHTABLE_H
+
+double HashTable::EXPAND_FACTOR = 0.7;
 
 HashTable::HashTable(int cap) {
     capacity = cap;
@@ -131,8 +147,11 @@ int HashTable::rehash(int index) {
     return (index + 1) % capacity;
 }
 
+int HashTable::rehashQuadraticProbing(int index, int probeCount) {
+    return (index + static_cast<int>(pow(probeCount, 2))) % capacity;
+}
 
-int HashTable::put(int key, int value) {
+int HashTable::putQuadraticProbing(int key, int value) {
     int oldValue; // previous value associated with key
     int probeCount = 0; // number of probes during linear probing
     int index = hash(key); // position for key-value pair in hashtable
@@ -144,7 +163,7 @@ int HashTable::put(int key, int value) {
 
     // Find position by linear probing (if collision occurs)
     while (buckets[index].key != -1 && buckets[index].key != key) {
-        index = rehash(index);
+        index = rehashQuadraticProbing(index, probeCount);
         probeCount++;
 
         // Exit the loop, if hashtable is full (no empty bucket was found)
@@ -153,6 +172,10 @@ int HashTable::put(int key, int value) {
         }
     }
 
+    // Check for time to resize hashtable
+    if (loadFactor() > EXPAND_FACTOR) {
+        resize();
+    }
     // Empty bucket is found, count number of unique keys stored in the table
     if (buckets[index].key == -1) {
         numElements++;
@@ -166,6 +189,45 @@ int HashTable::put(int key, int value) {
     return oldValue;
 }
 
+int HashTable::put(int key, int value, int &probeCount) {
+    int oldValue; // previous value associated with key
+    probeCount = 0; // number of probes during linear probing
+    int index = hash(key); // position for key-value pair in hashtable
+
+    // Validate key value
+    if (key < 0) { // valid keys are non-negative
+        throw runtime_error("Key should be non-negative value!");
+    }
+
+
+    // Find position by linear probing (if collision occurs)
+    while (buckets[index].key != -1 && buckets[index].key != key) {
+        index = rehash(index);
+        probeCount++;
+
+        // Exit the loop, if hashtable is full (no empty bucket was found)
+        if (probeCount >= capacity) {
+            throw runtime_error("Hash table is full");
+        }
+    }
+
+    // Check for time to resize hashtable
+    if (loadFactor() > EXPAND_FACTOR) {
+        resize();
+    }
+    // Empty bucket is found, count number of unique keys stored in the table
+    if (buckets[index].key == -1) {
+        numElements++;
+    }
+
+    // Create new bucket if the key doesn't exist,
+    // update existing bucket if the key exists
+    oldValue = buckets[index].value;
+    buckets[index].key = key;
+    buckets[index].value = value;
+    return oldValue;
+
+}
 
 int HashTable::get(int key) {
     int index = hash(key); // position for key-value pair in hashtable
@@ -213,5 +275,70 @@ bool HashTable::contains(int key) {
     return buckets[index].key == key;
 }
 
+void HashTable::resize() {
+    // update capacity
+    int oldCapacity = capacity;
+    capacity *= 2;
 
+    // create new array based on updated capacity
+    Bucket *tempArr = new Bucket[capacity];
 
+    // initialize new array (assuming -1 signifies empty bucket)
+    for (int i = 0; i < capacity; i++) {
+        tempArr[i].key = -1;
+        tempArr[i].value = -1;
+    }
+
+    // swap pointers of old array with new array (buckets now points on new arr)
+    swap(buckets, tempArr);
+
+    // Rehash elements into new array
+    for (int i = 0; i < oldCapacity; i++) {
+        if (tempArr[i].key != -1) {
+            int index = hash(tempArr[i].key);
+            while (buckets[i].key != -1) {
+                index = rehash(index);
+            }
+            buckets[index].key = tempArr[i].key;
+            buckets[index].value = tempArr[i].value;
+        }
+    }
+    // delete old array
+    delete[] tempArr;
+}
+
+double HashTable::loadFactor() {
+    return capacity > 0 ? static_cast<float>(numElements) / capacity : 0.0f;
+}
+
+double HashTable::averageProbesLinearProbing() {
+    if (loadFactor() >= 1.0) {
+        throw runtime_error("Load factor must be less than 1"
+                            " for linear probing");
+    }
+
+    return 0.5 * (1 + (1 / pow(1 - loadFactor(), 2)));
+}
+
+bool HashTable::del(int key) {
+    int probeCount = 0;
+    if (key < 0) {
+        return false;
+    }
+    int index = hash(key);
+    while (buckets[index].key != -1 && probeCount < capacity) {
+        // Check if we found the key
+        if (buckets[index].key == key) {
+            // Mark this bucket as deleted, but not empty
+            // Set the key to a special value, assume -2 signifies a deleted key
+            buckets[index].key = -2;
+            numElements--;
+            return true; // Successfully deleted
+        }
+
+        index = rehash(index);
+        probeCount++;
+    }
+
+    return false; // Key not found
+}

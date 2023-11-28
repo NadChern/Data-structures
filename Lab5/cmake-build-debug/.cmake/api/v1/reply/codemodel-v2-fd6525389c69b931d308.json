@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/nadin/CLionProjects/lab5/cmake-build-debug",
-		"source" : "/Users/nadin/CLionProjects/lab5"
+		"build" : "/Users/nadin/CLionProjects/Data_struct/Lab5/cmake-build-debug",
+		"source" : "/Users/nadin/CLionProjects/Data_struct/Lab5"
 	},
 	"version" : 
 	{

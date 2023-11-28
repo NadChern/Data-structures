@@ -32,6 +32,8 @@ int main() {
     const int SIZE = 4093; // capacity of hash table
     const int NUM_PAIRS = 4083; // number of key-value pairs to insert
     const int SIZE1 = 10; // size of the key, value arrays
+    int probesCount;
+    int totalCollisions = 0;
 
     int *keys; // pointer on the array of keys
     keys = new int[SIZE1]{1179, 9702, 7183, 50184, 4235,
@@ -39,13 +41,14 @@ int main() {
 
     int *values; // pointer on array of values
     values = new int[SIZE1]{120, 121, 122, 123,
-                            124, 125, 126, 127, 128,
-                            129};
+                            124, 125, 126, 127};
 
     HashTable hashT(SIZE); // HashTable object
 
     for (int i = 0; i < NUM_PAIRS; i++) {
-        hashT.put(i + 1, i + 10);
+        probesCount = 0;
+        hashT.put(i + 1, i + 10, probesCount);
+        totalCollisions += probesCount;
     }
 
     welcome();
@@ -59,9 +62,17 @@ int main() {
     // Insert 10 key-values
     cout << "\nInserting 10 additional key-values.." << endl;
     for (int i = 0; i < SIZE1; i++) {
-        hashT.put(keys[i], values[i]);
+        probesCount =0;
+        hashT.put(keys[i], values[i], probesCount);
+        totalCollisions += probesCount;
         cout << "(" << keys[i] << " , " << values[i] << ")" << endl;
     }
+
+    cout << "\nCollisions encountered: " << totalCollisions << endl;
+
+    // Average probes theoretically
+    cout << "\nAverage number of probes for such hashtable: "
+         << hashT.averageProbesLinearProbing() << endl;
 
     // Test contains function
     cout << "\nTesting contains.." << endl;

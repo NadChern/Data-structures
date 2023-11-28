@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/nadin/CLionProjects/lab5/cmake-build-debug"
+			"value" : "/Users/nadin/CLionProjects/Data_struct/Lab5/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/nadin/CLionProjects/lab5/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/nadin/CLionProjects/Data_struct/Lab5/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/nadin/CLionProjects/lab5"
+			"value" : "/Users/nadin/CLionProjects/Data_struct/Lab5"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1111,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/nadin/CLionProjects/lab5/cmake-build-debug"
+			"value" : "/Users/nadin/CLionProjects/Data_struct/Lab5/cmake-build-debug"
 		},
 		{
 			"name" : "lab5_IS_TOP_LEVEL",
@@ -1135,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/nadin/CLionProjects/lab5"
+			"value" : "/Users/nadin/CLionProjects/Data_struct/Lab5"
 		}
 	],
 	"kind" : "cache",
