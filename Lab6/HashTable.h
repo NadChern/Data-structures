@@ -151,6 +151,7 @@ int HashTable::rehashQuadraticProbing(int index, int probeCount) {
     return (index + static_cast<int>(pow(probeCount, 2))) % capacity;
 }
 
+
 int HashTable::putQuadraticProbing(int key, int value) {
     int oldValue; // previous value associated with key
     int probeCount = 0; // number of probes during linear probing
